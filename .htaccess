@@ -1,0 +1,15 @@
+# Impedir que se pueda ver el listado de contenidos de un directorio
+
+Options All -Indexes
+
+# Url Amigables
+Rewritebase /
+RewriteEngine On
+
+RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?ruta=$1
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^demobackend.tutiendaenlinea\.online$ [OR]
+RewriteCond %{HTTP_HOST} ^www\demobackend.tutiendaenlinea\.online$
+RewriteCond %{HTTPS} !on
+RewriteRule ^(.*)$ https://demobackend.tutiendaenlinea.online/$1 [R=301,L,NE]
